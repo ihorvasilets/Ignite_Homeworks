@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 1-3</title>
+</head>
+<body>
+
+<!-- ###Задача 3.
+Дан массив чисел: [1,2,31,24,-67,5,3,555,79,-4,21,33,89,-90].
+1) Найдите максимальное и минимальное значение массива.
+2) Все положительные и четные числа запишите в другой массив.
+Результаты выведите на экран. -->
+
+    <script type="text/javascript">
+        var source_arr = [1,2,31,24,-67,5,3,555,79,-4,21,33,89,-90];
+
+        document.write('<i>Дан массив чисел: [1,2,31,24,-67,5,3,555,79,-4,21,33,89,-90].<br /><br />1) Найдите максимальное и минимальное значение массива.<br />2) Все положительные и четные числа запишите в другой массив.<br /><br /></i>');
+
+// ---------------------- Maximun value -----------------------------
+        var max_value = function (arr) {
+            var max_value = arr[0];
+
+            for(element in arr){
+                if(arr[element] > max_value){
+                    max_value = arr[element];}
+            }
+            return max_value;
+        }
+
+// ---------------------- Minimum value -----------------------------
+        var min_value = function (arr) {
+            var min_value = arr[0];
+
+            for(element in arr){
+                if(arr[element] < min_value)
+                    min_value = arr[element];
+            }
+            return min_value;
+        }
+
+// ----------------- Positive and even values ------------------------
+        var pos_even = function (arr) {
+            var target = arr.filter(
+                function(cell){
+                    if((cell > 0) && (cell % 2 == 0))
+                        return true;
+                }
+            );
+            return target;
+        }
+
+        document.write('<b>Исходный массив: </b>' + source_arr + '<br />');
+        document.write('<b>Максимальное значение: </b>' + max_value(source_arr) + '<br />');
+        document.write('<b>Минимальное значение: </b>' + min_value(source_arr) + '<br />');
+        document.write('<b>Положительные и четные значения: </b>' + pos_even(source_arr) + '<br />');
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Classwork 1-1</title>
+</head>
+<body>
+
+<!-- ###Задача 1.
+Мини-задача на синтаксис объектов. Напишите код, по строке на каждое действие.
+```
+Создайте пустой объект user.
+Добавьте свойство name со значением Вася.
+Добавьте свойство surname со значением Петров.
+Поменяйте значение name на Сергей.
+Удалите свойство name из объекта.
+```-->
+
+    <script type="text/javascript">
+
+        var user = new Object();
+        document.write('<b>Обьект user: </b>' + user + '<br />');
+
+        user.name = 'Вася';
+        document.write('<b>Поле "name": </b>' + user.name + '<br />');
+
+        user.surname = 'Петров';
+        document.write('<b>Поле "surname": </b>' + user.surname + '<br />');
+
+        user.name = 'Сергей';
+        document.write('<b>Поле "name" после изменения: </b>' + user.name + '<br />');
+
+        delete user.name;
+        document.write('<b>Поле "name" после удаления: </b>' + user.name + '<br />');
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 1-2</title>
+</head>
+<body>
+
+<!-- ###Задача 2.
+Создайте функцию isEmpty(obj), которая возвращает true, если в объекте нет свойств и false – если хоть одно свойство есть.
+-->
+    <script type="text/javascript">
+
+        var  vasya = new Object();
+        var  petya = new Object();
+
+        vasya.age = 42;
+
+        document.write('Обьект <b>vasya</b> имеет поле age со значением 42, обьект <b>petya</b> не имеет свойтв.<br />Результаты работы функции isEmpty:<br /><br />');
+
+        function isEmpty(obj) {
+            var key = true;
+
+            for(element in obj){
+                key = false;
+            }
+
+            return key;
+        }
+
+        document.write('<b>isEmpty(vasya): </b>' + isEmpty(vasya) + '<br />');
+        document.write('<b>isEmpty(petya): </b>' + isEmpty(petya) + '<br />');
+
+    </script>
+</body>
+</html>

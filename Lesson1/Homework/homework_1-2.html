@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 1-2</title>
+</head>
+<body>
+
+<!-- ###Задача 2.
+```var arr = [1, 90, 789, 56, 45, 34, 678, 78, -90, -6, 5, 3, 6]; ```
+Отсортируйте массив arr, используя алгоритм пузырьковой сортировки.  -->
+
+<script type="text/javascript">
+
+    var source_arr = [1, 90, 789, 56, 45, 34, 678, 78, -90, -6, 5, 3, 6];
+
+    function bubbleSort(arr){
+        var buffer = 0;
+        var changed = false;
+
+        for (var j = 0; j < arr.length; j++) {
+            i = 0;
+            changed = false;
+
+            while (i < arr.length) {
+                if (arr[i] > arr[i + 1]) {
+
+                    buffer = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = buffer;
+
+                    changed = true;
+                }
+                i++;
+            }
+            if(!changed)
+                break;
+        }
+        return arr;
+    }
+
+    document.write('<b>Исходный массив: </b>' + source_arr + '</br>');
+    document.write('<b>Отсортированный массив: </b>' + bubbleSort(source_arr) + '</br>');
+</script>
+</body>
+</html>

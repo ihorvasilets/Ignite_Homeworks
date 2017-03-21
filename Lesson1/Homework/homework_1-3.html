@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 1-3</title>
+</head>
+<body>
+
+<!-- ###Задача 3.
+Напишите функцию bigToSmall, которая будет принимать один аргумент arr (двухмерный массив).
+Ваше задание:
+1. Привести двухмерный массив к одномерному.
+2. Отсортировать массив в нисходящем порядке.
+3. Использовать символ ‘>’ как разделитель при превращении массива в строку.
+
+Например:
+```
+  bigToSmall([[1,2],[3,4],[5,6]])  "6>5>4>3>2>1"
+  bigToSmall([[1,3,5],[2,4,6]])  "6>5>4>3>2>1"
+  bigToSmall([[1,1],[1],[1,1]])  "1>1>1>1>1"   -->
+
+<script type="text/javascript">
+
+    arr1 = [[1, 2], [3, 4], [5, 6]];
+    arr2 = [[1, 3, 5], [2, 4, 6]];
+    arr3 = [[1, 1], [1], [1, 1]];
+
+    var bigToSmall = function (arr) {
+        var small = [];
+        var sorted = [];
+        var joined = '';
+
+    // ---------------------- Converting 2d to 1d -----------------------------
+        for (var i = 0; i < arr.length; i++) {
+            for (var j = 0; j < arr[i].length; j++) {
+                small.push(arr[i][j])
+            }
+        }
+
+    // ---------------------- Sorting function -----------------------------
+        function bubbleSort(arr){
+            var buffer = 0;
+            var changed = false;
+
+            for (var j = 0; j < arr.length; j++) {
+                i = 0;
+                changed = false;
+
+                while (i < arr.length) {
+                    if (arr[i] > arr[i + 1]) {
+
+                        buffer = arr[i];
+                        arr[i] = arr[i + 1];
+                        arr[i + 1] = buffer;
+
+                        changed = true;
+                    }
+                    i++;
+                }
+                if(!changed)
+                    break;
+            }
+            return arr;
+        }
+
+    // ------------------------ Sort & join  -------------------------------
+        sorted = bubbleSort(small);
+        joined = sorted.join('>');
+
+        return joined;
+    }
+
+
+// ----------------- Printing of source 2d arrays  ---------------------
+    function printSource(arr){
+        document.write('<b>Исходный массив: </b> [');
+
+        for (var i = 0; i < arr.length; i++) {
+            document.write('[');
+
+            for (var j = 0; j < arr[i].length; j++) {
+                document.write(arr[i][j]);
+                if(j < (arr[i].length - 1))
+                    document.write(', ');
+            }
+
+            document.write(']');
+            if(i < (arr.length - 1))
+                document.write(', ');
+        }
+        document.write(']<br/>');
+    }
+
+    printSource(arr1);
+    document.write('<b>Отсортированный массив: </b>' + bigToSmall(arr1) + '<br /><br />');
+
+    printSource(arr2);
+    document.write('<b>Отсортированный массив: </b>' + bigToSmall(arr2) + '<br /><br />');
+
+    printSource(arr3);
+    document.write('<b>Отсортированный массив: </b>' + bigToSmall(arr3) + '<br /><br />');
+</script>
+</body>
+</html>

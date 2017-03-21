@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 1-1</title>
+</head>
+<body>
+
+<!-- ###Задача 1.
+Создайте функцию find(arr, value), которая ищет в массиве arr значение value
+и возвращает его номер, если найдено, или -1, если не найдено. -->
+
+<script type="text/javascript">
+    var data = [1,2,31,24,-67,5,3,555,79,-4,21,33,89,-90, 2];
+
+    document.write('<i>Создайте функцию find(arr, value), которая ищет в массиве arr значение value и возвращает его номер, если найдено, или -1, если не найдено.</i><br /><br />');
+
+    var find = function (arr, numb) {
+        var not_found = -1;
+        var result_arr = new Array();
+
+        for(element in arr){
+            if(arr[element] == numb)
+                result_arr.push(element);
+        }
+        if(result_arr.length > 0)
+            return result_arr;
+        else
+            return not_found;
+    }
+
+    document.write('<b>Массив для поиска значений: </b>' + data + '<br />');
+    document.write('<b>Поиск числа 2: &nbsp;&nbsp;&nbsp;</b>' + find(data, 2) + '<br />');
+    document.write('<b>Поиск числа -67: &nbsp;&nbsp;&nbsp;</b>' + find(data, -67) + '<br />');
+    document.write('<b>Поиск числа 999: &nbsp;&nbsp;&nbsp;</b>' + find(data, 999) + '<br />');
+</script>
+</body>
+</html>
