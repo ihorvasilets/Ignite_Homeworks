@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 2-1</title>
+</head>
+<body>
+
+<!-- ### Задача 1.
+Напишите функцию, которая принимает 1 параметр.
+При первом вызове она его запоминает, при втором - суммирует переданный параметр с параметром, переданным при предыдущем вызове.
+
+Например:
+```
+sum(3) = 3
+sum(5) = 8
+sum(228) = 236
+```
+ -->
+
+<script type="text/javascript">
+
+   var acc = (function () {
+       var sum = 0;
+       return function(number){
+          sum = sum + number;
+          document.write("sum(" + number + ") = " + sum + "<br />" );
+       }
+
+   }());
+
+   acc(3);
+   acc(5);
+   acc(228);
+
+</script>
+</body>
+</html>

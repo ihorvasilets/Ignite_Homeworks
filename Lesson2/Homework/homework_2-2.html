@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 2-2</title>
+</head>
+<body>
+
+<!-- ### Задача 2. 
+Создайте функцию strCount, которая принимает один аргумент (объект) и считает количество свойств строкового типа. 
+
+Например: 
+```
+strCount({
+  first: "1",
+  second: "2",
+  third: false,
+  fourth: ["anytime",2,3,4],
+  fifth:  null
+  })
+  //возвращает 3
+  ``` -->
+
+    <script type="text/javascript">
+
+        function strCount(data) {
+
+            var counter = 0;
+
+            for (element in data) {
+                check(data[element]);
+            }
+
+            function check(elem) {
+                if (typeof(elem) == "string") {
+                    counter++;
+                }
+                else if (typeof(elem) == "object") {
+                    for (cell in elem) {
+                        check(elem[cell]);
+                    }
+                }
+            }
+            alert("Object has " + counter + " string elements");
+            return counter;
+        }
+
+        strCount({
+            first: "1",
+            second: "2",
+            third: false,
+            fourth: ["anytime",2,3,4],
+            fifth:  null
+        })
+
+    </script>
+</body>
+</html>

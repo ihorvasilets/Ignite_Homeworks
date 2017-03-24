@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 2-3</title>
+</head>
+<body>
+
+<!-- ### Задача 3.
+   Напишите функцию, которая складывает числа при двойном вызове.
+Например:
+```
+add(3)(4)  // 7
+``` -->
+
+    <script type="text/javascript">
+
+        add = (function(){
+            var acc = 0;
+
+            return function (firstElem) {
+                acc = acc + firstElem;
+                return function(secondElem){
+                    acc = acc + secondElem;
+
+                    document.write(firstElem + " + " + secondElem + " = " + acc + '<br />');
+                    acc = 0;
+                }
+            }
+        }());
+
+        add(3)(4);
+        add(0)(7);
+        add(-33)(11);
+
+    </script>
+</body>
+</html>

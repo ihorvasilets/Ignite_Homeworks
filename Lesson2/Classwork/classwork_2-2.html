@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 2-2</title>
+</head>
+<body>
+
+<!-- ### Задача 2.
+Напишите функцию, возвращающую количество собственных вызовов. -->
+
+<script type="text/javascript">
+
+    var callCounter = (function(){
+        var count = 1;
+        return function (){
+            alert("Call #" + count++);
+        }
+    })();
+
+    callCounter();
+    callCounter();
+    callCounter();
+
+</script>
+</body>
+</html>

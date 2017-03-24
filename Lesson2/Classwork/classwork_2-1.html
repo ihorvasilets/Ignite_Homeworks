@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 2-1</title>
+</head>
+<body>
+
+<!-- ### Задача 1.
+Каков будет результат выполнения этого кода?
+```
+var value = 0;
+function f() {
+  if (1) {
+    value = true;
+  } else {
+    var value = false;
+  }
+  alert( value );
+}
+f();
+```
+Изменится ли внешняя переменная value ?
+Как изменится рузультат, если из строки var value = false убрать ключевое слово var? -->
+
+<script type="text/javascript">
+
+    var value = 0;
+    function f() {
+        if (1) {
+            value = true;
+        } else {
+            value = false;
+        }
+        alert(value);
+    }
+    f();
+
+
+    /*
+     Результатом выполнения кода будет значение true.
+
+     Внешняя переменная value не изменится.
+     Если из строки var value = false убрать ключевое слово var, глобальная переменная перепишется.
+     */
+
+</script>
+</body>
+</html>
