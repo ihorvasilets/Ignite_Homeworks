@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 3-3</title>
+</head>
+<body>
+
+<!-- ### Задача 3
+Напишите функцию-конструктор Summator, которая создает объект с двумя методами.
+* Метод sum(a,b) возвращает сумму двух значений;
+* Метод run() запрашивает два значения при помощи prompt и выводит их сумму, используя метод sum.
+В итоге вызов new Summator().run() должен спрашивать два значения и выводить их сумму. -->
+
+<script type="text/javascript">
+
+    function Summator() {
+
+        this.a;
+        this.b;
+
+
+        this.sum = function (a, b) {
+
+            return a + b;
+        }
+
+        this.run = function () {
+            this.a = prompt("Enter first value: ", 0);
+            if (this.a == null)
+                return "You must enter two values";
+
+            this.b = prompt("Enter second value: ", 0);
+            if (this.b == null)
+                return "You must enter two values"
+            var res = this.sum(+this.a, +this.b);
+
+            if((this.a != null && this.b != null) && (!(isNaN(this.a)) && !(isNaN(this.b))))
+                alert('Sum is: ' + res);
+            else
+                alert("You didn't enter two correct values");
+                return;
+            return res;
+        }
+
+    }
+
+    var ololo = new Summator().run();
+
+
+</script>
+</body>
+</html>

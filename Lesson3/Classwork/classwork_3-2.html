@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 3-2</title>
+</head>
+<body>
+
+<!-- ### Задача 2
+Напишите функцию-конструктор Calculator, которая создает объект с тремя методами:
+* Метод read() запрашивает два значения при помощи prompt и запоминает их в свойствах объекта.
+* Метод sum() возвращает сумму двух значений принятых от пользователя.
+* Метод mul() возвращает произведение двух значений принятых от пользователя.
+
+Пример использования:
+```
+var calculator = new Calculator();
+calculator.read();
+
+alert( "Сумма=" + calculator.sum() );
+alert( "Произведение=" + calculator.mul() );
+
+```  -->
+
+<script type="text/javascript">
+
+    function Calculator() {
+
+        this.a;
+        this.b;
+
+
+        this.read = function () {
+            this.a = prompt("Enter first value: ", 0);
+            if (isNaN(this.a)) {
+                alert("It's not a number!");
+                return
+            }
+            if (this.a == null)
+                return;
+
+            this.b = prompt("Enter second value: ", 0);
+            if (isNaN(this.b)) {
+                alert("It's not a number!");
+                return;
+            }
+            if (this.b == null)
+                return;
+        }
+
+        this.sum = function () {
+            if ( (this.a != null && this.b != null) && (!(isNaN(this.a)) && !(isNaN(this.b))) )
+                return (+this.a + +this.b);
+            else
+                return "You must enter two values";
+        }
+
+        this.mul = function () {
+            if ( (this.a != null && this.b != null) && (!(isNaN(this.a)) && !(isNaN(this.b))) )
+                return (this.a * this.b);
+            else
+                return "You must enter two values";
+        }
+
+    };
+
+    var calculator = new Calculator();
+
+    calculator.read();
+    alert("Сумма: " + calculator.sum());
+    alert("Произведение: " + calculator.mul());
+
+</script>
+</body>
+</html>
