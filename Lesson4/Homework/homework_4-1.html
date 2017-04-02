@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 4-1</title>
+</head>
+<body>
+
+<!-- ###Задача 1
+
+Представьте, что в JavaScript нет метода call, есть только метод apply. Используя apply, напишите метод call.
+  -->
+
+<script type="text/javascript">
+
+    Function.prototype.call = function () {
+        var context = arguments[0];
+        var args = [];
+
+        for(var i = 1; i < arguments.length; i++){
+            args.push(arguments[i]);
+        }
+        return this.apply(context, args);
+    }
+
+</script>
+</body>
+</html>

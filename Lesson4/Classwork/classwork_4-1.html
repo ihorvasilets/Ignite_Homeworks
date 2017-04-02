@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Classwork 4-1</title>
 </head>
 <body>
 
+<!-- ### Задача 1
+
+Напишите функцию sumArgs, которая суммирует все свои аргументы. При решении задачи используйте метод call или apply.
+  -->
+
+<script type="text/javascript">
+
+    function sumArgs(){
+        var sum = 0;
+        [].forEach.call(arguments, function (item, i, arguments) {
+            if (!isNaN(item))
+                sum += item;
+        });
+        alert('Sum of all numeric arguments is ' + sum);
+    }
+
+    sumArgs(-3, 3,  2, 7);
+
+</script>
 </body>
 </html>
