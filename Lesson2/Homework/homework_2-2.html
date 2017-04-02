@@ -41,9 +41,36 @@ strCount({
                     }
                 }
             }
-            alert("Object has " + counter + " string elements");
+            document.write("<br /><i>Object has " + counter + " string elements</i>");
             return counter;
         }
+
+        function print(obj){
+            document.write('{<br />');
+            for(elem in obj){
+
+
+                if(obj[elem] === null)
+                    document.write(' <b>' + elem + ': ' + '</b>' + 'null' + ' (null)' + '<br />');
+
+                else if(typeof(obj[elem]) == 'object'){
+                    document.write(' <b>' + elem + ': ' + '</b>');
+                    print(obj[elem]);}
+
+                else
+                    document.write(' <b>' + elem + ': ' + '</b>' + obj[elem] + ' (' + typeof(obj[elem]) + ')' + '<br />');
+            }
+            document.write('}<br />');
+
+        }
+
+        print({
+            first: "1",
+            second: "2",
+            third: false,
+            fourth: ["anytime",2,3,4],
+            fifth:  null
+        });
 
         strCount({
             first: "1",

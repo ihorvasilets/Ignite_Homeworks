@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 3-1</title>
+</head>
+<body>
+
+<!-- ### Задача 1
+Напишите функцию sum, которая будет работать как показано в примере ниже:
+```
+sum(1)(2) == 3; // 1 + 2
+sum(1)(2)(3) == 6; // 1 + 2 + 3
+sum(5)(-1)(2) == 6
+sum(6)(-1)(-2)(-3) == 0
+sum(0)(1)(2)(3)(4)(5) == 15
+```
+Количество скобок может быть любым.  -->
+
+<script type="text/javascript">
+
+    function sum(a){
+        var sum = 0;
+        sum += a;
+
+        function add(b){
+            if(isNaN(b)){
+                b = 0;      //ignoring wrong values
+            }
+            sum += b;
+            return add;
+        }
+
+        add.toString = function(){
+            return sum;
+
+        }
+
+        return add;
+    }
+
+    document.write("sum(1)(2) = " + sum(1)(2) + '<br />');
+    document.write("sum(1)(2)(3) = " + sum(1)(2)(3) + '<br />');
+    document.write("sum(5)(-1)(2) = " + sum(5)(-1)(2) + '<br />');
+    document.write("sum(6)(-1)(-2)(-3) = " + sum(6)(-1)(-2)(-3) + '<br />');
+    document.write("sum(0)(1)(2)(3)(4)(5) = " + sum(0)(1)(2)(3)(4)(5) + '<br />');
+    document.write("sum(21)(1)()()()(2)(3)(4)(5) = " + sum(21)(1)()()()(2)(3)(4)(5) + '<br />');
+
+</script>
+</body>
+</html>

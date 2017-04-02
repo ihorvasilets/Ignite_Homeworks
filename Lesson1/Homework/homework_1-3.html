@@ -30,14 +30,14 @@
         var sorted = [];
         var joined = '';
 
-    // ---------------------- Converting 2d to 1d -----------------------------
+        // ---------------------- Converting 2d to 1d -----------------------------
         for (var i = 0; i < arr.length; i++) {
             for (var j = 0; j < arr[i].length; j++) {
                 small.push(arr[i][j])
             }
         }
 
-    // ---------------------- Sorting function -----------------------------
+        // ---------------------- Sorting function -----------------------------
         function bubbleSort(arr){
             var buffer = 0;
             var changed = false;
@@ -63,7 +63,7 @@
             return arr;
         }
 
-    // ------------------------ Sort & join  -------------------------------
+        // ------------------------ Sort & join  -------------------------------
         sorted = bubbleSort(small);
         joined = sorted.join('>');
 
@@ -71,7 +71,7 @@
     }
 
 
-// ----------------- Printing of source 2d arrays  ---------------------
+    // ----------------- Printing of source 2d arrays  ---------------------
     function printSource(arr){
         document.write('<b>Исходный массив: </b> [');
 

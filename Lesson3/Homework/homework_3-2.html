@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 3-2</title>
+</head>
+<body>
+
+<!-- ### Задача 2
+Напишите функцию runString, которая:
+
+1)принимает 2 аргумента:
+ * arg:  аргумент любого типа
+ * объект со свойствами:
+1. param: строка.
+2. func: строка, содержащая код функции.
+
+2)выполняет код функции func, переданной ей в качестве аргумента, с параметром arg.
+Например:
+```
+var arg = 4,                         // аргумент для функции runString
+    obj = {
+      param: 'num',                  // имя параметра для функции в свойстве func
+      func: 'return Math.sqrt(num)'  // функция, которая должна быть вызванв с  агрументом arg
+    };
+
+runString(arg, obj)
+```   -->
+
+<script type="text/javascript">
+
+    var arg = "Hi, i'm the arg-value!";
+    obj = {
+        param: '',
+        func: function(){
+            alert(this.param);
+        }
+    }
+
+    function runString(arg, obj){
+        obj.param = arg;
+        obj.func();
+    }
+
+    runString(arg, obj);
+
+</script>
+</body>
+</html>
