@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 5-3</title>
+</head>
+<body>
+
+<!-- ### Задача 3
+Напишите функцию, которая принимает один аргумент и возвращает его тип данных.
+Выполните обработку исключений в случае передачи двух и больше аргументов.  -->
+
+<script type="text/javascript">
+
+   function checkType() {
+       try {
+            if (arguments.length > 1) {
+                throw new SyntaxError("More arguments, than expected!");
+            }
+            else{
+                var toString = {}.toString;
+                alert('Type of argument: ' + toString.call(arguments[0]));
+            }
+       }
+       catch (e){
+           alert(e.name + '! ' + e.message + " Please enter only one argument.");
+       }
+   }
+
+   checkType(2);
+   checkType([4, 5, 7]);
+   checkType(true);
+   checkType({});
+   checkType(checkType);
+   checkType(2, 4);
+
+</script>
+</body>
+</html>
