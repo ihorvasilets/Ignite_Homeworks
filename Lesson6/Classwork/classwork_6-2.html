@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 6-2</title>
+</head>
+<body>
+
+<!-- ### Задача 2.
+
+Код для  задачи:
+
+```
+<body>
+
+  <div id="widget" data-widget-name="menu">Выберите жанр</div>
+
+  <script>
+    /* ... */
+  </script>
+</body>
+```
+Задание:
+
+* Напишите код, который получит объект для тега div и запишите его в переменную.
+* Запишите значение атрибута "data-widget-name" в переменную.
+  -->
+
+<div id="widget" data-widget-name="menu">Выберите жанр</div>
+
+<script type="text/javascript">
+
+    var div = document.getElementsByTagName('div')[0];
+    var attr = div.dataset.widgetName;
+
+</script>
+</body>
+</html>
+
+
+
+
+
