@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 7-3</title>
+</head>
+<body>
+
+<!-- ### Задача 3.
+
+Напишите функцию makeBoard, которая генерирует таблицу с указанным количеством строк и столбцов и закрашивает ее ечейки черным и белым цветами в шахматном порядке.
+  -->
+
+<style>
+
+</style>
+
+
+
+<script type="text/javascript">
+    window.onload = function () {
+        function makeBoard(rows, cols){
+            var table = document.createElement('table');
+
+            var rowsBuf = [];   //created rows
+            var colsBuf = [];   //created cols
+            var color = true;   //color flag
+
+            document.body.appendChild(table);
+
+            for(var i = 0; i < rows; i++){
+                rowsBuf[i] = document.createElement('tr');
+                table.appendChild(rowsBuf[i]);
+
+                if(cols%2 == 0){        //change first cell color in each next row, if number of cells is even
+                    color = !color;
+                }
+
+                for(var j = 0; j < cols; j++){
+                    colsBuf[j] = document.createElement('td');
+                    colsBuf[j].innerHTML = (i+1) + ' ' + (j+1);
+
+                    if(color){
+                        colsBuf[j].style.backgroundColor = 'yellow';    //yellow, if color flag is true
+                        color = !color;
+                    }
+                    else {
+                        colsBuf[j].style.backgroundColor = 'white';     //white, if color flag is true
+                        color = !color;
+                    }
+                    rowsBuf[i].appendChild(colsBuf[j]);
+                }
+            }
+
+
+
+        }
+
+        //makeBoard(5, 4);
+        //makeBoard(23, 7);
+        makeBoard(5, 10);
+
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
