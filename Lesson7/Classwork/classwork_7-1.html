@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 7-1</title>
+</head>
+<body>
+
+<!-- ### Задача 1.
+Создайте страницу. Разместите на ней произвольное количеством элементов.
+Разработайте сценарий, который будет по очереди перемещать span с текстом и интервалом в 400мс:
+1) Перед элементом.
+2) Внутри элемента перед тектом
+3) Внетри элемента после текста.
+4) После элемента.
+  -->
+
+<div style="background-color: yellow; padding: 10px; height: 400px">
+    <p style="background-color: greenyellow; padding: 10px; height: 30%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, quisquam.</p>
+    <p style="background-color: bisque; padding: 10px; height: 30%;">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+</div>
+<p style="background-color: darksalmon; padding: 10px; height: 100px;">Lorem ipsum dolor.</p>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var moveSpan = (function () {
+
+            var elems = document.querySelectorAll('body *');
+            var span = document.createElement('span');
+
+            span.innerHTML = '<b>Moving span</b>';
+
+            var i = j = k = l = 0;
+
+
+            function nextElem() {
+
+                //before begin
+                var timeout1 = setTimeout(function () {
+                    elems[i++].before(span);
+                    if(i == (elems.length - 1)){        //(length - 1) - without the <script>-element
+                        i = 0;}
+                }, 400);
+
+                //after begin
+                var timeout2 = setTimeout(function () {
+                    elems[j++].prepend(span);
+                    if(j == (elems.length - 1)){
+                        j = 0;}
+                }, 800);
+
+                //before end
+                var timeout3 = setTimeout(function () {
+                    elems[k++].append(span);
+                    if(k == (elems.length - 1)){
+                        k = 0;}
+                }, 1200);
+
+                //after end
+                var timeout4 = setTimeout(function () {
+                    elems[l++].after(span);
+                    if(l == (elems.length - 1)){
+                        l = 0;}
+                }, 1600);
+
+            }
+
+            //go to the next element
+            var int = setInterval(nextElem, 1600);
+
+            //stop moving
+            var end = setTimeout(function () {
+                clearInterval(int);
+            }, 50000);
+
+        })();
+    }
+</script>
+</body>
+</html>
+
+
+
+
+

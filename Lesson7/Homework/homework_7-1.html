@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 7-1</title>
+</head>
+<body>
+
+<!-- ### Задача 1.
+
+Создайте страницу с 3 элементами div. Напишите сценарий, который будет произвольно менять положение этиъ элементов на странице каждую секунду.
+  -->
+
+<style>
+    .color{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        background-color: red;
+    }
+</style>
+
+<div class="color"></div>
+<div class="color"></div>
+<div class="color"></div>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var divs = document.getElementsByTagName('div');
+        var size = divs[0].offsetHeight;    //size of elements
+
+        //get random coords
+        function getRandomArbitrary(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        function changeCoords(){
+            for(var i = 0; i < 3; i++){
+                divs[i].style.top = getRandomArbitrary(0, (window.innerHeight-size)) + 'px';
+                divs[i].style.left = getRandomArbitrary(0, (window.innerWidth-size)) + 'px';
+            }
+        }
+
+        var interval = setInterval(changeCoords, 1000);
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
