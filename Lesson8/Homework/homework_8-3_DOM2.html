@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 8-3 DOM2</title>
+</head>
+<body>
+
+<!-- ### Задача 3.
+
+Создайте страницу-калькулятор.
+Разместите на странице два поля ввода и кнопки для арифметических операций над
+данными введенными в поля ввода. Реализуйте данную страницу двумя способами – с использованием модели DOM Level 0 (через атрибуты) и DOM Level 2.
+ -->
+
+<style>
+    p{
+        display: inline;
+    }
+</style>
+
+<input type="text" size="10" id="first">
+<input type="text" size="10" id="second">
+
+<button id="add" class="button" onclick="sum()">Add</button>
+<button id="sub" class="button" onclick="sub()">Sub</button>
+<button id="mult" class="button" onclick="mult()">Mult</button>
+<button id="div" class="button" onclick="div()">Div</button>
+
+<div id="result"></div>
+
+
+<script>
+
+    window.onload = function () {
+
+        var result = document.getElementById('result');
+
+        var add = document.getElementById('add');
+        var sub = document.getElementById('sub');
+        var mult = document.getElementById('mult');
+        var div = document.getElementById('div');
+
+        var first = document.getElementById('first');
+        var second = document.getElementById('second');
+
+        add.addEventListener('click', function () {
+            if (check()) result.innerHTML = (+first.value) + (+second.value);
+        });
+        sub.addEventListener('click', function () {
+            if (check()) result.innerHTML = (+first.value) - (+second.value);
+        });
+        mult.addEventListener('click', function () {
+            if (check()) result.innerHTML = (+first.value) * (+second.value);
+        });
+        div.addEventListener('click', function () {
+            if (second.value === '0') {
+                alert('Error - division by 0!');
+                return 0;
+            }
+            if (check()) result.innerHTML = (+first.value) / (+second.value);
+        });
+
+
+        function check() {
+            if (isNaN(first.value) || isNaN(second.value) || first.value === '' || second.value === '')  {
+                alert('Error - wrong input!');
+                return false;
+            }
+            return true;
+        }
+    }
+</script>
+</body>
+</html>
+
+
+
+
+

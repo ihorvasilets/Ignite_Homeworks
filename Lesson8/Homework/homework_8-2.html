@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 8-2</title>
+</head>
+<body>
+
+<!-- ### Задача 2.
+
+При наведении мыши на элемент, на нём возникает событие mouseover, при удалении мыши с элемента – событие mouseout.
+Зная это, напишите JS-код, который будет делать так, что при наведении на элемент, если у него есть атрибут data-tooltip – над ним будет показываться подсказка с содержимым этого атрибута.
+Например, две кнопки:
+```
+<button data-tooltip="подсказка длиннее, чем элемент">Короткая кнопка</button>
+<button data-tooltip="HTML<br>подсказка">Ещё кнопка</button>
+```  -->
+
+<button data-tooltip="подсказка длиннее, чем элемент">Короткая кнопка</button>
+<button data-tooltip="HTML<br>подсказка">Ещё кнопка</button>
+
+<script>
+
+    window.onload = function () {
+        var body = document.getElementsByTagName('body')[0];
+        var buttons = document.getElementsByTagName('button');
+        var div = document.createElement('div');
+
+        div.style.border = '1px solid black';
+        div.style.display = 'none';
+        div.style.position = 'absolute';
+
+        document.body.appendChild(div);
+
+        buttons[0].onmouseover = function () {
+            if(this.dataset.tooltip){
+                div.innerHTML = buttons[0].dataset.tooltip;
+                div.style.display = 'block';
+
+                var a = buttons[0].offsetTop + buttons[0].offsetHeight + 1;
+                div.style.top = a + 'px';
+                div.style.left = buttons[0].offsetLeft + 'px';
+            }
+
+        }
+        buttons[0].onmouseout = function () {
+            div.innerHTML = '';
+            div.style.display = 'none';
+        }
+
+        buttons[1].onmouseover = function () {
+            if(this.dataset.tooltip){
+                div.innerHTML = buttons[1].dataset.tooltip;
+                div.style.display = 'block';
+
+                var a = buttons[1].offsetTop + buttons[1].offsetHeight + 1;
+                div.style.top = a + 'px';
+                div.style.left = buttons[1].offsetLeft + 'px';
+            }
+
+        }
+        buttons[1].onmouseout = function () {
+            div.innerHTML = '';
+            div.style.display = 'none';
+        }
+
+    }
+</script>
+</body>
+</html>
+
+
+
+
+

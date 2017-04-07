@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 8-2</title>
+</head>
+<body>
+
+<!-- ### Задача 2.
+
+Создайте страницу. Разместите на странице поле ввода, кнопку и пустой div.
+Создайте сценарий, который при нажатии на кнопку будет записывать содержимое поля ввода в пустой div. -->
+
+<style>
+    div{
+        margin-top: 10px;
+        height: 200px;
+        width: 200px;
+        overflow-y: auto;
+
+        border: 1px solid black;
+    }
+</style>
+
+<input type="text" size="24" autofocus>
+<button id="button">Write to div</button>
+</br>
+<div></div>
+
+<script type="text/javascript">
+    window.onload = function () {
+
+        var butt = document.getElementById('button');
+        var div = document.getElementsByTagName('div')[0];
+        var input = document.querySelectorAll('input')[0];
+
+        butt.onclick = function () {
+            div.innerHTML += '</br>' + input.value;
+            input.value = '';
+        }
+    }
+</script>
+</body>
+</html>
+
+
+
+
+

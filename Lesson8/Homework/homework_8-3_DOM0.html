@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 8-3 DOM0</title>
+</head>
+<body>
+
+<!-- ### Задача 3.
+
+Создайте страницу-калькулятор.
+Разместите на странице два поля ввода и кнопки для арифметических операций над
+данными введенными в поля ввода. Реализуйте данную страницу двумя способами – с использованием модели DOM Level 0 (через атрибуты) и DOM Level 2.
+ -->
+
+<style>
+    p{
+        display: inline;
+    }
+</style>
+
+<input type="text" size="10" id="first">
+<input type="text" size="10" id="second">
+
+<button id="add" class="button" onclick="sum()">Add</button>
+<button id="sub" class="button" onclick="sub()">Subtract</button>
+<button id="mult" class="button" onclick="mult()">Multiply</button>
+<button id="div" class="button" onclick="div()">Divide</button>
+
+<div id="result"></div>
+
+
+<script>
+
+    function sum() {
+
+        var first = document.getElementById('first');
+        var second = document.getElementById('second');
+
+        if (isNaN(first.value) || first.value == '') {
+            first.style.border = '1px dotted red';
+            document.getElementById('result').innerHTML = 'Wrong input';
+
+        } else first.style.border = '1px solid black';
+        if (isNaN(second.value) || second.value == '') {
+            second.style.border = '1px dotted red';
+            document.getElementById('result').innerHTML = 'Wrong input';
+
+        } else second.style.border = '1px solid black';
+        var result = parseInt(first.value) + parseInt(second.value);
+        if (!isNaN(first.value) && !isNaN(second.value) && !(first.value == '') && !(second.value == '')) {
+            first.style.border = '1px solid black';
+            second.style.border = '1px solid black';
+            document.getElementById('result').innerHTML = result.toString();
+        }
+    }
+    function sub() {
+        var first = document.getElementById('first');
+        var second = document.getElementById('second');
+
+        if (isNaN(first.value) || first.value == '') {
+            first.style.border = '1px dotted red';
+            document.getElementById('result').innerHTML = 'Wrong input';
+
+        } else first.style.border = '1px solid black';
+        if (isNaN(second.value) || second.value == '') {
+            second.style.border = '1px dotted red';
+            document.getElementById('result').innerHTML = 'Wrong input';
+
+        } else second.style.border = '1px solid black';
+        var result = parseInt(first.value) - parseInt(second.value);
+        if (!isNaN(first.value) && !isNaN(second.value) && !(first.value == '') && !(second.value == '')) {
+            first.style.border = '1px solid black';
+            second.style.border = '1px solid black';
+            document.getElementById('result').innerHTML = result.toString();
+        }
+    }
+    function mult() {
+        var first = document.getElementById('first');
+        var second = document.getElementById('second');
+
+        if (isNaN(first.value) || first.value == '') {
+            first.style.border = '1px dotted red';
+            document.getElementById('result').innerHTML = 'Wrong input';
+
+        } else first.style.border = '1px solid black';
+        if (isNaN(second.value) || second.value == '') {
+            second.style.border = '1px dotted red';
+            document.getElementById('result').innerHTML = 'Wrong input';
+
+        } else second.style.border = '1px solid black';
+        var result = parseInt(first.value) * parseInt(second.value);
+        if (!isNaN(first.value) && !isNaN(second.value) && !(first.value == '') && !(second.value == '')) {
+            first.style.border = '1px solid black';
+            second.style.border = '1px solid black';
+            document.getElementById('result').innerHTML = result.toString();
+        }
+    }
+    function div() {
+        var first = document.getElementById('first');
+        var second = document.getElementById('second');
+
+        if (isNaN(first.value) || first.value == '') {
+            first.style.border = '1px dotted red';
+            document.getElementById('result').innerHTML = 'Wrong input';
+
+        } else first.style.border = '1px solid black';
+        if (isNaN(second.value) || second.value == '') {
+            second.style.border = '1px dotted red';
+            document.getElementById('result').innerHTML = 'Wrong input';
+
+        } else second.style.border = '1px solid black';
+        var result = parseInt(first.value) / parseInt(second.value);
+        if (!isNaN(first.value) && !isNaN(second.value) && !(first.value == '') && !(second.value == '')) {
+            first.style.border = '1px solid black';
+            second.style.border = '1px solid black';
+            if (result === Infinity)
+                document.getElementById('result').innerHTML = 'Error - division by 0!';
+            else
+                document.getElementById('result').innerHTML = result.toString();
+        }
+    }
+</script>
+</body>
+</html>
+
+
+
+
+

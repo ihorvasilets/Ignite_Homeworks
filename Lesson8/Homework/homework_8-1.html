@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 8-1</title>
+</head>
+<body>
+
+<!-- ### Задача 1.
+
+Создайте регистрационную форму:  логин, пароль, телефон и кнопка "Отправить".
+По нажатию на кнопку "Отправить", проверьте корректность ввода данных с помощью JavaScript.
+1) Логин - не должен содержать цифры.
+2) Пароль - не дожен содержать знак $.
+3) Телефон - должен содержать только цифры.
+
+Закрасьте фон поля ввода в красный цвет, если были введены неправильные данные.
+
+Используйте для решение данной задачи методы для работы со строками или регулярные выражения:
+[link](https://learn.javascript.ru/regexp-introduction)
+ -->
+
+<style>
+    p{
+        display: inline;
+    }
+</style>
+
+<form action="#" method="post">
+    <p>Login: </p>
+    <input type="text" id="login" title="Numbers is not allowed"></br></br>
+    <p>Password: </p>
+    <input type="text" id="pass" title="Any characters except '$'"></br></br>
+    <p>Phone number: </p>
+    <input type="text" id="phone" title="Only numbers are allowed"></br></br>
+    <button id="submit" type="submit">Submit</button>
+</form>
+
+<script type="text/javascript">
+    window.onload = function () {
+
+        var button = document.getElementById('submit')
+
+        button.onclick = function formCheck(e) {
+            var login = document.getElementById('login')
+            var pass = document.getElementById('pass');
+            var phone = document.getElementById('phone');
+
+            var correctinp = true;
+            if (login.value.match(/\d/) || login.value === '') {
+                login.style.border = "2px dotted red";
+                correctinp = false;
+            }
+            if (pass.value.match(/\$/) || pass.value === '') {
+                pass.style.border = "2px dotted red";
+                correctinp = false;
+            }
+            if (phone.value.match(/\D/) || phone.value === '') {
+                phone.style.border = "2px dotted red";
+                correctinp = false;
+            }
+            if (!correctinp) {
+                e.preventDefault();
+            }
+        }
+
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
