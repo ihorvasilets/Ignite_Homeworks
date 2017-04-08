@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 9-2</title>
+</head>
+<body>
+
+<!-- ### Задача 2.
+
+Создайте кнопку навигации, которая помогает при прокрутке страницы.
+Работать должна следующим образом:
+* Пока страница промотана меньше чем на высоту экрана вниз – кнопка не видна.
+* При промотке страницы вниз больше, чем на высоту экрана, появляется кнопка «стрелка вверх».
+* При нажатии на нее страница прыгает вверх, но не только. Дополнительно, кнопка меняется на «стрелка вниз» и при клике возвратит на старое место. Если же в этом состоянии посетитель сам прокрутит вниз больше, чем один экран, то она вновь изменится на «стрелка вверх».
+Должен получиться удобный навигационный помощник. -->
+
+<style>
+    body{
+        height: 2000px;
+    }
+    #btn{
+        background-image: url(up.png);
+        background-size: cover;
+        height: 40px;
+        width: 40px;
+        position: fixed;
+        top: 50%;
+        right: 10px;
+        display: none;
+    }
+</style>
+
+<div id="btn"><div>
+
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById('btn');
+            document.addEventListener('scroll', function (e) {
+
+                if (document.body.scrollTop >= window.innerHeight){
+                    btn.style.display =  'block';
+                    btn.style.backgroundImage =  'url(up.png)';
+
+                    btn.onclick = function () {
+                        var currentPosition = document.body.scrollTop;
+                        document.body.scrollTop = 0;
+                        btn.style.backgroundImage =  'url(down.png)';
+
+                        btn.onclick = function (){
+                            document.body.scrollTop = currentPosition;
+                        }
+                    }
+                }
+            })
+        }
+
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 9-3</title>
+</head>
+<body>
+
+<!-- ### Задача 3.  
+Создайте страницу с двумя полями ввода, кнопкой и элементом div с шириной и высотой 50px. 
+Создайте сценарий, который по нажатию на кнопку будет перемещать div в координаты, указанные в полях ввода. 
+В случае, если при нажатии кнопки хотя бы одно из полей ввода не заполнено, пользователь должен получить предупреждение, 
+а событие click должно быть отменено.  -->
+
+<style>
+    div{
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+        position: absolute;;
+        background-color: palegreen;
+        position: absolute;
+    }
+</style>
+
+<form action="#">
+    <p>Enter coordinates:</p>
+    <input type="text" placeholder="X-coord">
+    <input type="text" placeholder="Y-coord">
+    <button>Move</button>
+</form>
+
+<div></div>
+
+<script>
+    window.onload = function () {
+
+        var div = document.getElementsByTagName('div')[0];
+        var coords = document.getElementsByTagName('input');
+        var btn = document.getElementsByTagName('button')[0];
+
+        //input
+        document.forms[0].addEventListener('keydown', function (e){
+            if((e.keyCode >= 48 && e.keyCode <= 57) || e.keyCode == 8 || e.keyCode == 13){}
+            else{
+                e.preventDefault();
+            }
+        });
+
+        //move on click
+        btn.addEventListener('click', function (e) {
+            if(coords[0].value != '' && coords[1].value != ''){
+                div.style.left = coords[0].value + 'px';
+                div.style.top = coords[1].value + 'px';
+            }
+            else{
+                alert('Wrong input!')
+                e = null;
+            }
+        })
+    }
+</script>
+</body>
+</html>

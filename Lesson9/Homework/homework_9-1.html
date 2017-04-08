@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 9-1</title>
+</head>
+<body>
+
+<!-- ### Задача 1.
+Сделайте список, элементы которого можно выделять кликом.
+Используйте для решения данной задачи свойство e.target. -->
+
+<style>
+    li{
+        width: 100px;
+        height: 30px;
+        text-align: center;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        list-style-type: none;
+        border: 1px solid cadetblue;
+        background-color: aliceblue;
+    }
+    ul{
+        width: 150px;
+        margin: auto;
+        padding: 10px;
+        background-color: beige !important;
+        border: none !important;
+
+    }
+    .select{
+        background-color: red;
+        border: 2px solid black;
+    }
+
+</style>
+<ul>
+    <li>First</li>
+    <li>Second</li>
+    <li>Third</li>
+    <li>Fourth</li>
+    <li>Fifth</li>
+</ul>
+<script>
+    window.onload = function () {
+        var ul = document.getElementsByTagName('ul')[0];
+
+        ul.addEventListener('click', function (e) {
+            e.target.classList.toggle("select");
+        })
+    }
+</script>
+</body>
+</html>
+

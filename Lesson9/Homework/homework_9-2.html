@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 9-2</title>
+</head>
+<body>
+
+<!-- ### Задача 2.  
+Создайте круг красного цвета с надписью "Скидка". Когда курсор пользователя будет приближаться к ней, 
+"Скидка" должна от него "убегать", не давая пользователю нажать на красный круг. 
+Если круг будет выйдет за одну из сторон экрана, то он должен, появится с противоположной стороны.
+ -->
+
+<style>
+    div{
+        width: 100px;
+        height: 100px;
+
+        border-radius: 50px;
+        background-color: red;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
+    p{
+        padding-top: 40px;
+        margin: auto;
+        text-align: center;
+    }
+
+</style>
+<div>
+    <p>Скидка</p>
+</div>
+<script>
+    window.onload = function () {
+        var div = document.getElementsByTagName('div')[0];
+        var MIN_DISTANCE = 10;
+        var STEP = 10;
+        var START_POSITION = 50;
+
+        document.body.addEventListener('mousemove', function (e) {
+
+            //horizontal movement
+            if(e.clientX >= (div.offsetLeft - MIN_DISTANCE) && e.clientX <= (div.offsetLeft + div.offsetWidth/2)){
+                var moveTo = div.offsetLeft + STEP;
+                div.style.left = moveTo + 'px';}
+            if(e.clientX >= (div.offsetLeft + div.offsetWidth/2) && e.clientX <= (div.offsetLeft + div.offsetWidth + MIN_DISTANCE)){
+                var moveTo = div.offsetLeft - STEP;
+            div.style.left = moveTo + 'px';}
+
+            //go to opposite side
+            if(div.offsetLeft >= window.innerWidth - div.offsetWidth)
+                div.style.left = START_POSITION + 'px';
+            if(div.offsetLeft <= 0){
+                div.style.left = (window.innerWidth - div.offsetWidth - START_POSITION) + 'px';}
+
+            //vertical movement
+            if(e.clientY >= (div.offsetTop - MIN_DISTANCE) && e.clientY <= (div.offsetTop + div.offsetHeight/2)){
+                var moveTo = div.offsetTop + STEP;
+                div.style.top = moveTo + 'px';}
+            if(e.clientY >= (div.offsetTop + div.offsetHeight/2) && e.clientY <= (div.offsetTop + div.offsetHeight + MIN_DISTANCE)){
+                var moveTo = div.offsetTop - STEP;
+                div.style.top = moveTo + 'px';}
+
+            //go to opposite side
+            if(div.offsetTop >= window.innerHeight - div.offsetHeight)
+                div.style.top = START_POSITION + 'px';
+            if(div.offsetTop <= 0){
+                div.style.top = (window.innerHeight - div.offsetHeight - START_POSITION) + 'px';}
+        })
+    }
+</script>
+</body>
+</html>

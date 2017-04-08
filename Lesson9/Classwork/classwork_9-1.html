@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 9-1</title>
+</head>
+<body>
+
+<!-- ### Задача 1.
+
+Создайте страницу. Реализуйте следующее:
+* При нажатии комбинации клавиш ctrl + a (регистр не учитывается!) на экран выводится сообщение ‘Данные выбраны’;
+* При нажатии комбинации клавиш ctrl + s (регистр не учитывается!) на экран выводится сообщение ‘Данные сохранены’;
+ -->
+
+<div id="out"><div>
+
+    <script>
+        window.onload = function () {
+            document.addEventListener('keydown', function (e) {
+                var out = document.getElementById('out');
+                if (e.ctrlKey == true && e.keyCode == '65')
+                    out.innerHTML = 'Данные выбраны';
+                e.preventDefault();
+                if (e.ctrlKey == true && e.keyCode == '83')
+                    out.innerHTML = 'Данные сохранены';
+            })
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+
+
