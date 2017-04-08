@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 10-3</title>
+</head>
+<body>
+
+<!-- ### Задача 3.
+
+Разработайте страницу с двумя полями ввода и кнопкой. Пользователь должен вводить в поля ввода целочисленный значения, а нажатие по кнопке должно приводить к
+асинхронному запросу на сервер. Запрашивать следует обработчик CalcHandler.ashx, который находиться вместе с задачей в папке Homework, обработчик принимает два post параметра с именами ‘a’ и ‘b'.
+Результат который возвращает обработчик выведите на страницу (рекомендуется выполнять задачу в Visual Studio).
+  -->
+
+<form action="#">
+    <p>Enter variables:</p>
+    <input type="text" placeholder="a">
+    <input type="text" placeholder="b">
+    <button>Send</button>
+</form>
+
+<div id="output"></div>
+
+<script>
+    window.onload = function () {
+
+        document.forms[0].addEventListener('keydown', function (e){
+            if((e.keyCode >= 48 && e.keyCode <= 57) || e.keyCode == 8 || e.keyCode == 13){}
+            else{
+                e.preventDefault();
+            }
+        });
+
+        var output = document.getElementById('output');
+        var vars = document.getElementsByTagName('input');
+        var btn = document.getElementsByTagName('button')[0];
+
+        btn.onclick = function() {
+
+            var dataA = vars[0].value;
+            var dataB = vars[1].value;
+
+            if(dataA == '' || dataB == ''){
+                alert('Please, enter two values.')
+                e.preventDefault();
+            }
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST','CalcHandler.ashx');
+
+            xhr.send('a=' + dataA + '&b=' + dataB);
+
+            xhr.onload = function() {
+                output.innerHTML += xhr.responseText + '<br/>';
+            }
+        }
+    }
+</script>
+</body>
+</html>

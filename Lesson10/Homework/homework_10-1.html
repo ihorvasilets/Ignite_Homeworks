@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 10-1</title>
+</head>
+<body>
+
+<!-- ### Задача 1.
+
+Создайте две HTML страницы с разным контентом. Создайте страницу, в которой находиться сценарий загружающий и отображающий контент двух этих страниц при нажатии на кнопку.
+Контент должен загружаться асинхронно.  -->
+
+<button id="button" style="margin:5px">Get data</button>
+<div id="output"></div>
+
+<script>
+    window.onload = function () {
+        var xhr1 = new XMLHttpRequest();
+        var xhr2 = new XMLHttpRequest();
+
+        document.getElementById("button").onclick = function () {
+            xhr1.open("GET", "Page1.html", true);
+            xhr2.open("GET", "Page2.html", true);
+
+            //first page
+            xhr1.onreadystatechange = function () {
+                if (xhr1.readyState == 4 && xhr1.status == 200) {
+                    document.getElementById("output").innerHTML += xhr1.responseText;
+                }
+            };
+
+            //second page
+            xhr2.onreadystatechange = function () {
+                if (xhr2.readyState == 4 && xhr2.status == 200) {
+                    document.getElementById("output").innerHTML += xhr2.responseText;
+                }
+            };
+
+            xhr1.send();
+            xhr2.send();
+        }
+    }
+</script>
+</body>
+</html>
