@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="helloWorldApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 11-2</title>
+    <script src="angular.js"></script>
+
+    <!-- ###Задача2
+Создайте страницу с полем ввода и кнопкой. При нажатии на кнопку содержимое поля ввода должно отображаться на странице.   -->
+
+    <script>
+
+        var helloWorldApp = angular.module("helloWorldApp", []);
+
+        helloWorldApp.controller("HelloWorldCtrl", function ($scope) {
+
+            $scope.clickHandler = function () {
+                $scope.message = $scope.text;
+            }
+        });
+
+    </script>
+</head>
+
+<body ng-controller="HelloWorldCtrl">
+
+    <input ng-model="text" />
+    <button ng-click="clickHandler()">Обновить</button>
+
+    <h1>{{message}}</h1>
+
+</body>
+</html>

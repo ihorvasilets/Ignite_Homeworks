@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html ng-app="courseListApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Планировщик курсов</title>
+    <script src="angular.js"></script>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap-theme.css" rel="stylesheet" />
+
+    <script>
+
+        var model = {
+            toToList: [{ name: "Купить молоко", description: "Сходить на рынок и купить молоко", date: '2/18/2015', completed: "Yes" },
+                { name: "Посмотреть урок по AngularJS", description: "Досмотреть до конца урок на ltvdn.com", date: '2/18/2015', completed: "Yes" }]
+        };
+
+
+        var courseListApp = angular.module("courseListApp", []);
+
+        // Контроллер
+
+        courseListApp.controller("CourseListCtrl", function ($scope) {
+
+            $scope.data = model;
+            $scope.toDoName = $scope.toDoDesc =  $scope.toDoDate = $scope.toDoDone = $scope.error = "";
+
+            // Обработчик нажатия по кнопке
+            $scope.addNewTask = function () {
+                if( $scope.toDoName != '' &&  $scope.toDoDesc != '' &&  $scope.toDoDate != ''){
+                    $scope.data.toToList.push({
+                        name: $scope.toDoName,
+                        description: $scope.toDoDesc,
+                        date: $scope.toDoDate,
+                        completed: $scope.toDoDone,
+                    });
+
+                    $scope.toDoName = $scope.toDoDesc =  $scope.toDoDate = $scope.toDoDone = $scope.error = "";
+                }
+                else {
+                    $scope.error = 'Enter description of task!'
+                }
+            }
+        });
+
+    </script>
+
+</head>
+
+<body ng-controller="CourseListCtrl">
+<div class="container">
+    <div class="page-header">
+        <h1>
+            ToDo List
+        </h1>
+    </div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Completed</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="toDo in data.toToList">
+                <td>{{toDo.name}}</td>
+                <td>{{toDo.description}}</td>
+                <td>{{toDo.date}}</td>
+                <td>{{toDo.completed}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+
+    <div class="panel">
+
+        <div class="form-group">
+            <label for="name">Comment:</label>
+            <input class="form-control" ng-model="toDoName" id='name' />
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input class="form-control" ng-model="toDoDesc" id='description' />
+        </div>
+
+        <div class="form-group">
+            <label for="date">Due date:</label>
+            <input class="form-control" ng-model="toDoDate" id='date' />
+        </div>
+
+        <div class="form-group">
+            <label for="completed">Completed:</label>
+            <input type='checkbox' class="checkbox" ng-model="toDoDone" id='completed'/>
+        </div>
+
+        <button class="btn btn-default" ng-click="addNewTask()">Add</button>
+        <h4 style="color: red">{{error}}</h4>
+
+    </div>
+</div>
+</body>
+</html>
+
