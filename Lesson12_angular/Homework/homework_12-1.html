@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html ng-app="ngRepeatClasswork">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 12-1</title>
+    <script src="angular.js"></script>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap-theme.css" rel="stylesheet" />
+
+    <script>
+
+        var app = angular.module('ngRepeatClasswork', [])
+            .controller('mainCtrl', function ($scope) {
+                $scope.active = {
+                    name: true,
+                    price:  true,
+                    cat: true,
+                    count: true,
+                    tax: true,
+                    exp: true
+                }
+
+                $scope.links = {
+                    nameLink: 'libs/name.html',
+                    priceLink: 'libs/price.html',
+                    catLink: 'libs/cat.html',
+                    countLink: 'libs/count.html',
+                    taxLink: 'libs/tax.html',
+                    expLink: 'libs/exp.html'
+                }
+
+                $scope.items = [
+                    { name: "B Item", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10 },
+                    { name: "A Item", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12 },
+                    { name: "D Item", price: 2.6, category: "Category 2", count: 7, tax: 0.22, expiration: 5 },
+                    { name: "C Item", price: 17.5, category: "Category 2", count: 33, tax: 2.77, expiration: 10 }];
+
+                $scope.filter = function () {
+                    if($scope.active.name == true){
+                        $scope.links.nameLink = 'libs/name.html';
+                    }
+                    else if($scope.active.name == false) {
+                        $scope.links.nameLink = '';
+                    }
+
+                    if($scope.active.price == true){
+                        $scope.links.priceLink = 'libs/price.html';
+                    }
+                    else if($scope.active.price == false) {
+                        $scope.links.priceLink = '';
+                    }
+
+                    if($scope.active.cat == true){
+                        $scope.links.catLink = 'libs/cat.html';
+                    }
+                    else if($scope.active.cat == false) {
+                        $scope.links.catLink = '';
+                    }
+
+                    if($scope.active.count == true){
+                        $scope.links.countLink = 'libs/count.html';
+                    }
+                    else if($scope.active.count == false) {
+                        $scope.links.countLink = '';
+                    }
+
+                    if($scope.active.tax == true){
+                        $scope.links.taxLink = 'libs/tax.html';
+                    }
+                    else if($scope.active.tax == false) {
+                        $scope.links.taxLink = '';
+                    }
+
+                    if($scope.active.exp == true){
+                        $scope.links.expLink = 'libs/exp.html';
+                    }
+                    else if($scope.active.exp == false) {
+                        $scope.links.expLink = '';
+                    }
+                }
+            });
+
+    </script>
+
+</head>
+
+<body ng-controller="mainCtrl">
+<div class="panel panel-primary" ng-cloak>
+    <table class="table">
+        <thead>
+        <tr>
+            <th><label for="name">Name</label><input id="name" type="checkbox" class="checkbox" ng-model="active.name" ng-click="filter()"/></th>
+            <th><label for="price">Price</label><input id="price" type="checkbox" class="checkbox" ng-model="active.price" ng-click="filter()"/></th>
+            <th><label for="cat">Category</label><input id="cat" type="checkbox" class="checkbox" ng-model="active.cat" ng-click="filter()"/></th>
+            <th><label for="count">Count</label><input id="count" type="checkbox" class="checkbox" ng-model="active.count" ng-click="filter()"/></th>
+            <th><label for="tax">Tax</label><input id="tax" type="checkbox" class="checkbox" ng-model="active.tax" ng-click="filter()"/></th>
+            <th><label for="exp">Expiration</label><input id="exp" type="checkbox" class="checkbox" ng-model="active.exp" ng-click="filter()"/></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="item in items" ng-cloak>
+            <td><ng-include src="links.nameLink"></ng-include></td>
+            <td><ng-include src="links.priceLink"></ng-include></td>
+            <td><ng-include src="links.catLink"></ng-include></td>
+            <td><ng-include src="links.countLink"></ng-include></td>
+            <td><ng-include src="links.taxLink"></ng-include></td>
+            <td><ng-include src="links.expLink"></ng-include></td>
+
+        </tr>
+        <tbody>
+    </table>
+</div>
+</body>
+</html>

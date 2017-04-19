@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html ng-app="factoryService">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 14-1</title>
+    <script src="angular.js"></script>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap-theme.css" rel="stylesheet" />
+
+    <!-- ### Задача 1.
+Создайте страницу с кнопкой. Разработайте сервис, который будет считать количество кликов по кнопке и выводить его в консоль. Используйте фабричную функцию для создания сервиса.
+  -->
+
+    <style>
+        div{
+            padding: 30px;
+        }
+    </style>
+
+    <script>
+        var module = angular.module('factoryService', [])
+            .controller('mainCtrl', ['$scope', 'counterService', function ($scope, counterService) {
+
+                $scope.clicks = 'Number of clicks: 0';
+                $scope.str = "Number of clicks: ";
+
+                $scope.counter = function () {
+                    $scope.clicks = $scope.str + counterService();
+                };
+
+            }])
+
+            //factory service
+            .factory('counterService', function () {
+                var count = 1;
+
+                return function () {
+                    return count++;
+                };
+            })
+
+    </script>
+</head>
+<body>
+<div class="panel panel-primary" ng-controller="mainCtrl">
+    <input type="button" class="btn-lg btn-success" value="+ 1" ng-click="counter()">
+    <h3>{{clicks}}</h3>
+</div>
+</body>
+</html>

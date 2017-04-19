@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html ng-app="httpService">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 14-3</title>
+    <script src="angular.js"></script>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap-theme.css" rel="stylesheet" />
+
+    <!-- ### Задача 3
+Используйте сервис $http для получения данных из файла data.json, который находится в папке data. Отобразите полученные данные на странице в виде таблицы. Предусмотрите обработку ошибок в запросе (используя Promise).
+ -->
+
+    <style>
+        div{
+            padding: 30px;
+        }
+    </style>
+
+    <script>
+        var module = angular.module('httpService', [])
+            .controller('mainCtrl', function ($scope, $http) {
+
+                $scope.items = '';
+                $scope.headers = [];
+
+                //sending http-request
+                $scope.httpRequest = function () {
+                    $http({
+                        method: 'GET',
+                        url: 'data/data.json'
+
+                    //onSuccess
+                    }).then(function successHandler(response)
+                    {
+                        //getting keys from data
+                        for(item in response.data){
+                            var keys = Object.keys(response.data[item]);
+                            break;
+                        }
+
+                        for(keyItem in keys){
+                            $scope.headers.push(keys[keyItem]);
+                        }
+
+                        $scope.items = response.data;
+
+                    //onError
+                    }, function errorHandler(response)
+                    {
+                        alert('Something went wrong. ' + response.statusText);
+                    })
+                }
+
+            })
+
+
+    </script>
+</head>
+<body>
+<div ng-controller="mainCtrl" class="panel panel-primary" >
+    <div>
+        <input type="button" value="get items!"         class="btn-lg btn-success"  ng-click="httpRequest()">
+    </div>
+
+    <table class="table">
+        <thead style="font-weight: bold; font-size: 30px">
+        <tr >
+            <td ng-repeat="header in headers">
+                {{headers[$index]}}
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in items">
+            <td ng-repeat="insItem in item">{{insItem}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

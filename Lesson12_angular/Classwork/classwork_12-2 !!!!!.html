@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html ng-app="ngRepeatClasswork">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 12-2</title>
+    <script src="angular.js"></script>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap-theme.css" rel="stylesheet" />
+
+    <script>
+
+        var app = angular.module('ngRepeatClasswork', [])
+            .controller('mainCtrl', function ($scope) {
+                $scope.active = {
+                    name: true,
+                    price: true,
+                    cat: true,
+                    count: true,
+                    tax: true,
+                    exp: true
+                };
+
+                $scope.items = [
+                    { name: "B Item", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10 },
+                    { name: "A Item", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12 },
+                    { name: "D Item", price: 2.6, category: "Category 2", count: 7, tax: 0.22, expiration: 5 },
+                    { name: "C Item", price: 17.5, category: "Category 2", count: 33, tax: 2.77, expiration: 10 }];
+
+            });
+
+    </script>
+
+</head>
+
+<body ng-controller="mainCtrl">
+    <div class="panel panel-primary"  ng-cloak>
+        <table class="table">
+            <thead>
+            <tr>
+                <th><label for="name">Name</label><input id="name" type="checkbox" class="checkbox" ng-model="active.name"         /></th>
+                <th><label for="price">Price</label><input id="price" type="checkbox" class="checkbox" ng-model="active.price"             /></th>
+                <th><label for="category">Category</label><input id="category" type="checkbox" class="checkbox" ng-model="active.cat"         /></th>
+                <th><label for="count">Count</label><input id="count" type="checkbox" class="checkbox" ng-model="active.count"             /></th>
+                <th><label for="tax">Tax</label><input id="tax" type="checkbox" class="checkbox" ng-model="active.tax"         /></th>
+                <th><label for="expiration">Expiration</label><input id="expiration" type="checkbox" class="checkbox" ng-model="active.exp"         /></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-cloak>
+                <td>
+                    <table ng-repeat="item in items" ng-cloak  ng-switch="active.name">
+                        <tr ng-switch-when="true">{{item.name}}</tr>
+                    </table>
+                </td>
+                <td ng-switch="active.price">
+                    <table ng-repeat="item in items" ng-cloak ng-switch-when="true">
+                        <tr>{{item.price}}</tr>
+                    </table>
+                </td>
+                <td ng-switch="active.cat">
+                    <table ng-repeat="item in items" ng-cloak ng-switch-when="true">
+                        <tr>{{item.category}}</tr>
+                    </table>
+                </td>
+                <td ng-switch="active.count">
+                    <table ng-repeat="item in items" ng-cloak ng-switch-when="true">
+                        <tr>{{item.count}}</tr>
+                    </table>
+                </td>
+                <td ng-switch="active.tax">
+                    <table ng-repeat="item in items" ng-cloak ng-switch-when="true">
+                        <tr>{{item.tax}}</tr>
+                    </table>
+                </td>
+                <td ng-switch="active.exp">
+                    <table ng-repeat="item in items" ng-cloak ng-switch-when="true">
+                        <tr>{{item.expiration}}</tr>
+                    </table>
+                </td>
+
+            </tr>
+            <tbody>
+        </table>
+    </div>
+</body>
+</html>
+
