@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html ng-app="anchorService">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 15-2</title>
+    <script src="angular.js"></script>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap-theme.css" rel="stylesheet" />
+
+    <!-- ### Задача 2
+Создайте страницу с двумя кнопками Start и Stop. Реализуйте следующее:
+* при нажатии на кнопку start, на страницу начинают выводиться чила в возрастающем порядке с интервалом 1 с.
+* При нажатии на кнопку stop вывод чисел останавливается.
+* При нажатии на кнопку start отсчет начинается всегда с 0.
+  -->
+
+    <style>
+        button.list-group-item{
+            width: 300px;
+        }
+    </style>
+
+    <script>
+        var app = angular.module('anchorService', [])
+
+            .controller('mainCtrl', function ($scope, $anchorScroll, $location) {
+
+                $scope.goTo = function (id) {
+                    $location.hash(id);
+                }
+            })
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-primary" ng-controller="mainCtrl">
+
+        <div class="panel-body">
+            <h4 id="top">Navigation menu:</h4>
+            <div class="list-group">
+                <button type="button" class="list-group-item" ng-click="goTo('t1')">Title 1</button>
+                <button type="button" class="list-group-item" ng-click="goTo('t2')">Title 2</button>
+                <button type="button" class="list-group-item" ng-click="goTo('t3')">Title 3</button>
+                <button type="button" class="list-group-item" ng-click="goTo('t4')">Title 4</button>
+                <button type="button" class="list-group-item" ng-click="goTo('t5')">Title 5</button>
+            </div>
+
+            <div class="panel panel-default" id="t1">
+                <div class="panel-heading"><h3>Title 1</h3></div>
+                <div class="panel-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi eius ipsam labore minus placeat voluptate voluptatibus. Accusamus alias asperiores, at aut consequuntur debitis dolores earum esse est eveniet excepturi harum in ipsum modi molestiae nemo odio placeat quaerat quibusdam quisquam repellat saepe sapiente similique sit sunt suscipit tempora. Adipisci, assumenda debitis dolorem eligendi error fugiat iure nostrum obcaecati, omnis quia quos, rerum similique totam ut vel? Ab consequatur, dicta distinctio doloremque ea est excepturi exercitationem fugiat iure iusto laboriosam minima nam natus nesciunt nobis optio porro provident quam quod sapiente soluta temporibus vitae? Aspernatur enim iste molestias. Corporis doloribus, iste natus recusandae reprehenderit suscipit vero. Accusantium commodi culpa deserunt eaque enim eum eveniet expedita, facilis fugit harum illo incidunt inventore ipsum nesciunt nulla omnis, quibusdam veritatis! Dolor, ducimus eius laudantium maxime nulla omnis perspiciatis similique velit voluptatum? Ab consequuntur debitis doloribus dolorum ducimus impedit odit repellat voluptate! Quasi, ut, voluptates.<p>
+                    <button class="btn btn-default" ng-click="goTo('top')">
+                        Up
+                    </button>
+                </div>
+            </div>
+
+            <div class="panel panel-default" id="t2">
+                <div class="panel-heading"><h3>Title 2</h3></div>
+                <div class="panel-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis iusto mollitia reprehenderit tempore. Aperiam deleniti dolorum fugiat officiis quibusdam quisquam repellendus suscipit unde? Accusantium ipsam maxime molestiae nam optio quas quod similique, suscipit totam voluptatum. Eligendi, nostrum, veritatis! Adipisci amet autem commodi consectetur corporis dolores enim excepturi inventore, itaque molestiae molestias necessitatibus nesciunt pariatur perferendis perspiciatis placeat quis sit tempore totam vitae. Adipisci culpa cupiditate dicta ducimus exercitationem expedita facilis in laboriosam magnam maxime modi, molestias nam obcaecati omnis optio provident quae quasi quidem quisquam reprehenderit sapiente sint veritatis. Ab, aliquam aliquid animi architecto consectetur consequatur cupiditate deserunt dolore eligendi enim exercitationem expedita facere fugiat in laudantium magni minima necessitatibus nostrum omnis pariatur provident quia ratione repellendus rerum saepe suscipit vitae! Cupiditate eos et expedita, inventore laboriosam laudantium magni nostrum, odit placeat reiciendis saepe sed similique suscipit ullam unde veniam voluptatum. Laudantium magnam nihil optio sed? A accusamus alias ea eos eveniet hic id ipsa iste odit perferendis possimus qui tempore, vero? Accusamus, accusantium dignissimos dolorem earum expedita iusto laboriosam maiores, necessitatibus nemo quas quia quos vel? Ab aliquam beatae, culpa cupiditate earum eos expedita illum, impedit ipsum labore necessitatibus nostrum pariatur quam quas quis rem veniam vitae. Fugiat, perferendis?</p>
+                    <button class="btn btn-default" ng-click="goTo('top')">
+                        Up
+                    </button>
+                </div>
+            </div>
+
+            <div class="panel panel-default" id="t3">
+                <div class="panel-heading"><h3>Title 3</h3></div>
+                <div class="panel-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis iusto mollitia reprehenderit tempore. Aperiam deleniti dolorum fugiat officiis quibusdam quisquam repellendus suscipit unde? Accusantium ipsam maxime molestiae nam optio quas quod similique, suscipit totam voluptatum. Eligendi, nostrum, veritatis! Adipisci amet autem commodi consectetur corporis dolores enim excepturi inventore, itaque molestiae molestias necessitatibus nesciunt pariatur perferendis perspiciatis placeat quis sit tempore totam vitae. Adipisci culpa cupiditate dicta ducimus exercitationem expedita facilis in laboriosam magnam maxime modi, molestias nam obcaecati omnis optio provident quae quasi quidem quisquam reprehenderit sapiente sint veritatis. Ab, aliquam aliquid animi architecto consectetur consequatur cupiditate deserunt dolore eligendi enim exercitationem expedita facere fugiat in laudantium magni minima necessitatibus nostrum omnis pariatur provident quia ratione repellendus rerum saepe suscipit vitae! Cupiditate eos et expedita, inventore laboriosam laudantium magni nostrum, odit placeat reiciendis saepe sed similique suscipit ullam unde veniam voluptatum. Laudantium magnam nihil optio sed? A accusamus alias ea eos eveniet hic id ipsa iste odit perferendis possimus qui tempore, vero? Accusamus, accusantium dignissimos dolorem earum expedita iusto laboriosam maiores, necessitatibus nemo quas quia quos vel? Ab aliquam beatae, culpa cupiditate earum eos expedita illum, impedit ipsum labore necessitatibus nostrum pariatur quam quas quis rem veniam vitae. Fugiat, perferendis?</p>
+                    <button class="btn btn-default" ng-click="goTo('top')">
+                        Up
+                    </button>
+                </div>
+            </div>
+
+            <div class="panel panel-default" id="t4">
+                <div class="panel-heading"><h3>Title 4</h3></div>
+                <div class="panel-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis iusto mollitia reprehenderit tempore. Aperiam deleniti dolorum fugiat officiis quibusdam quisquam repellendus suscipit unde? Accusantium ipsam maxime molestiae nam optio quas quod similique, suscipit totam voluptatum. Eligendi, nostrum, veritatis! Adipisci amet autem commodi consectetur corporis dolores enim excepturi inventore, itaque molestiae molestias necessitatibus nesciunt pariatur perferendis perspiciatis placeat quis sit tempore totam vitae. Adipisci culpa cupiditate dicta ducimus exercitationem expedita facilis in laboriosam magnam maxime modi, molestias nam obcaecati omnis optio provident quae quasi quidem quisquam reprehenderit sapiente sint veritatis. Ab, aliquam aliquid animi architecto consectetur consequatur cupiditate deserunt dolore eligendi enim exercitationem expedita facere fugiat in laudantium magni minima necessitatibus nostrum omnis pariatur provident quia ratione repellendus rerum saepe suscipit vitae! Cupiditate eos et expedita, inventore laboriosam laudantium magni nostrum, odit placeat reiciendis saepe sed similique suscipit ullam unde veniam voluptatum. Laudantium magnam nihil optio sed? A accusamus alias ea eos eveniet hic id ipsa iste odit perferendis possimus qui tempore, vero? Accusamus, accusantium dignissimos dolorem earum expedita iusto laboriosam maiores, necessitatibus nemo quas quia quos vel? Ab aliquam beatae, culpa cupiditate earum eos expedita illum, impedit ipsum labore necessitatibus nostrum pariatur quam quas quis rem veniam vitae. Fugiat, perferendis?</p>
+                    <button class="btn btn-default" ng-click="goTo('top')">
+                        Up
+                    </button>
+                </div>
+            </div>
+
+            <div class="panel panel-default" id="t5">
+                <div class="panel-heading"><h3>Title 5</h3></div>
+                <div class="panel-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis iusto mollitia reprehenderit tempore. Aperiam deleniti dolorum fugiat officiis quibusdam quisquam repellendus suscipit unde? Accusantium ipsam maxime molestiae nam optio quas quod similique, suscipit totam voluptatum. Eligendi, nostrum, veritatis! Adipisci amet autem commodi consectetur corporis dolores enim excepturi inventore, itaque molestiae molestias necessitatibus nesciunt pariatur perferendis perspiciatis placeat quis sit tempore totam vitae. Adipisci culpa cupiditate dicta ducimus exercitationem expedita facilis in laboriosam magnam maxime modi, molestias nam obcaecati omnis optio provident quae quasi quidem quisquam reprehenderit sapiente sint veritatis. Ab, aliquam aliquid animi architecto consectetur consequatur cupiditate deserunt dolore eligendi enim exercitationem expedita facere fugiat in laudantium magni minima necessitatibus nostrum omnis pariatur provident quia ratione repellendus rerum saepe suscipit vitae! Cupiditate eos et expedita, inventore laboriosam laudantium magni nostrum, odit placeat reiciendis saepe sed similique suscipit ullam unde veniam voluptatum. Laudantium magnam nihil optio sed? A accusamus alias ea eos eveniet hic id ipsa iste odit perferendis possimus qui tempore, vero? Accusamus, accusantium dignissimos dolorem earum expedita iusto laboriosam maiores, necessitatibus nemo quas quia quos vel? Ab aliquam beatae, culpa cupiditate earum eos expedita illum, impedit ipsum labore necessitatibus nostrum pariatur quam quas quis rem veniam vitae. Fugiat, perferendis?</p>
+                    <button class="btn btn-default" ng-click="goTo('top')">
+                        Up
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

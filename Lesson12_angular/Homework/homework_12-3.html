@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html ng-app="SPAAp">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 12-3</title>
+    <script src="../../libraries/angular.js"></script>
+    <link href="../../libraries/bootstrap.css" rel="stylesheet" />
+    <link href="../../libraries/bootstrap-theme.css" rel="stylesheet" />
+
+    <!--### Задача 3
+    Реализуйте SPA приложение, в котором пользователю представляется пройти тест из 5 вопросов, в каждом вопросе по 4 варианта ответа. Вопросы должны выбираться с помощью radio-button и когда выбран, например, вопрос №1, то на странице должны появится варианты ответа только для этого вопроса. В конце тестирования отобразите результат теста. При решении данной задачи используйте директиву ng-switch.-->
+
+    <script>
+
+        var model = [1, 2, 3, 4, 4];
+
+
+        var app = angular.module('SPAAp', [])
+            .controller('mainCtrl', function ($scope) {
+                $scope.correctAnswers = model;
+                $scope.answers = [];        //answers
+                $scope.qwestion = '1';      //active qwestion
+
+                $scope.result = 0;
+                $scope.num = $scope.correctAnswers.length;
+
+                $scope.check = function () {
+                    for (var i=0; i < $scope.answers.length; i++){
+                        if($scope.answers[i] == $scope.correctAnswers[i]){
+                            $scope.result++;
+                        }
+                    }
+                    $scope.qwestion = '6';
+                }
+            })
+
+    </script>
+
+    <style>
+        span{
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body ng-controller="mainCtrl">
+<div class="container">
+    <div class="page-header">
+        <h1>
+            Test-form
+        </h1>
+    </div>
+
+    <div class="panel">
+        <div class="panel-heading">
+            <label class="radio-inline"><input ng-model="qwestion" type="radio" name="optradio" value="1" checked>Qwestion 1</label>
+            <label class="radio-inline"><input ng-model="qwestion" type="radio" name="optradio" value="2">Qwestion 2</label>
+            <label class="radio-inline"><input ng-model="qwestion" type="radio" name="optradio" value="3">Qwestion 3</label>
+            <label class="radio-inline"><input ng-model="qwestion" type="radio" name="optradio" value="4">Qwestion 4</label>
+            <label class="radio-inline"><input ng-model="qwestion" type="radio" name="optradio" value="5">Qwestion 5</label>
+        </div>
+
+        <div class="panel-body" ng-switch on="qwestion">
+
+            <div ng-switch-when="1">
+                <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, velit?</h2><br>
+                <div class="radio">
+                    <label><input ng-model="answers[0]" type="radio" name="firstQw" value="1">Option 1</label>
+                </div>
+                <div class="radio">
+                    <label><input ng-model="answers[0]" type="radio" name="firstQw" value="2">Option 2</label>
+                </div>
+                <div class="radio">
+                    <label><input ng-model="answers[0]" type="radio" name="firstQw" value="3">Option 3</label>
+                </div>
+                <div class="radio">
+                    <label><input ng-model="answers[0]" type="radio" name="firstQw" value="4">Option 4</label>
+                </div>
+            </div>
+
+            <div ng-switch-when="2">
+                <h2>Facere harum ipsum magni officia perferendis quia quod ratione rem totam voluptas?</h2><br>
+                <div class="radio">
+                    <label><input ng-model="answers[1]" type="radio" name="secondQw" value="1">Option 1</label>
+                </div>
+                <div class="radio">
+                    <label><input ng-model="answers[1]" type="radio" name="secondQw" value="2">Option 2</label>
+                </div>
+                <div class="radio">
+                    <label><input ng-model="answers[1]" type="radio" name="secondQw" value="3">Option 3</label>
+                </div>
+                <div class="radio">
+                    <label><input ng-model="answers[1]" type="radio" name="secondQw" value="4">Option 4</label>
+                </div>
+            </div>
+
+            <div ng-switch-when="3">
+                <h2>Totam voluptas iusto praesentium quia quod?</h2><br>
+                <div class="radio">
+                    <label><input ng-model="answers[2]" type="radio" name="thirdQw" value="1">Option 1</label>
+                </div>
+                <div class="radio">
+                    <label><input ng-model="answers[2]" type="radio" name="thirdQw" value="2">Option 2</label>
+                </div>
+                <div class="radio">
+                    <label><input ng-model="answers[2]" type="radio" name="thirdQw" value="3">Option 3</label>
+                </div>
+                <div class="radio">
+                    <label><input ng-model="answers[2]" type="radio" name="thirdQw" value="4">Option 4</label>
+                </div>
+            </div>
+
+            <div ng-switch-when="4">
+                <h2>A amet delectus exercitationem illum iste modi nobis quod totam?</h2><br>
+                <div class="radio">
+                    <label><input ng-model="answers[3]" type="radio" name="fourthQw" value="1">Option 1</label>
+                </div>
+                <div class="radio">
+                    <label><input ng-model="answers[3]" type="radio" name="fourthQw" value="2">Option 2</label>
+                </div>
+                <div class="radio">
+                    <label><input ng-model="answers[3]" type="radio" name="fourthQw" value="3">Option 3</label>
+                </div>
+                <div class="radio">
+                    <label><input ng-model="answers[3]" type="radio" name="fourthQw" value="4">Option 4</label>
+                </div>
+            </div>
+
+            <div ng-switch-when="5">
+                <h2>Ab accusantium deserunt dolorem doloribus iste magnam modi?</h2><br>
+                <div class="radio">
+                    <label><input ng-model="answers[4]" type="radio" name="fifthQw" value="1">Option 1</label>
+                </div>
+                <div class="radio">
+                    <label><input ng-model="answers[4]" type="radio" name="fifthQw" value="2">Option 2</label>
+                </div>
+                <div class="radio">
+                    <label><input ng-model="answers[4]" type="radio" name="fifthQw" value="3">Option 3</label>
+                </div>
+                <div class="radio">
+                    <label><input ng-model="answers[4]" type="radio" name="fifthQw" value="4">Option 4</label>
+                </div>
+                <br>
+
+                <button class="btn btn-default" ng-click="check()">Finish testing</button>
+            </div>
+
+            <div ng-switch-when="6">
+                <h2>You have {{result}} of  {{num}} correct answers</h2><br>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

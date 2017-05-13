@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html ng-app="classesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 13-2</title>
+    <script src="../../libraries/angular.js"></script>
+    <link href="../../libraries/bootstrap.css" rel="stylesheet" />
+    <link href="../../libraries/bootstrap-theme.css" rel="stylesheet" />
+
+    <!--### Задача 2
+    Создайте страницу с десятью тегами div с текстом, полем ввода и кнопкой. Добавьте фильтр, который при вводе значения в поле и после нажатия на кнопку, покажет пользователю только те блоки, текст в которых соответствуют введеному значению. Остальные блоки должны быть скрыты.
+    -->
+
+    <script>
+
+        var model = [
+            {text: 'div1'}, {text: 'div1'}, {text: 'div2'}, {text: 'div4'}, {text: 'div4'}, {text: 'div4'}, {text: 'div5'}, {text: 'div5'}, {text: 'div5'}, {text: 'div5'}]
+
+
+        var app = angular.module('classesApp', [])
+            .controller('mainCtrl', function ($scope) {
+                $scope.items = model;
+
+                $scope.formText = '';
+                $scope.formTempText = '';
+
+                $scope.showDivs = function () {
+                    $scope.formText = $scope.formTempText;
+                }
+            })
+
+    </script>
+
+    <style>
+        div.std{
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background-color: orangered;
+        }
+
+    </style>
+
+</head>
+
+<body ng-controller="mainCtrl">
+<div class="container">
+    <div class="page-header">
+        <h1>
+            Show divs
+        </h1>
+    </div>
+
+    <div class="panel">
+        <div class="panel-heading">
+            <h4>Enter description of div (div1/div2/div3 etc.)</h4>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Inner-text..." ng-model="formTempText">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" ng-click="showDivs()">Show</button>
+                </span>
+
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="std" ng-repeat="item in items" ng-show="item.text == formText">{{item.text}}</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

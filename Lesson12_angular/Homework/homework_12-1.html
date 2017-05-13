@@ -1,116 +1,123 @@
 <!DOCTYPE html>
 
-<html ng-app="ngRepeatClasswork">
+<html ng-app="courseListApp">
 <head>
     <meta charset="UTF-8">
-    <title>Classwork 12-1</title>
-    <script src="angular.js"></script>
-    <link href="bootstrap.css" rel="stylesheet" />
-    <link href="bootstrap-theme.css" rel="stylesheet" />
+    <title>Homework 12-1</title>
+    <script src="../../libraries/angular.js"></script>
+    <link href="../../libraries/bootstrap.css" rel="stylesheet" />
+    <link href="../../libraries/bootstrap-theme.css" rel="stylesheet" />
+
+    <!--### Задача 1
+    Создайте приложение-калькулятор. В приложении должно быть два поля ввода и кнопки «+», «-», «*», «/». Реализуйте двунаправленную привязку таким образом, чтобы при нажатии на кнопки результат арифметических операций выводился на странице.-->
 
     <script>
 
-        var app = angular.module('ngRepeatClasswork', [])
-            .controller('mainCtrl', function ($scope) {
-                $scope.active = {
-                    name: true,
-                    price:  true,
-                    cat: true,
-                    count: true,
-                    tax: true,
-                    exp: true
+        var model = {
+            first: 0,
+            second: 0,
+            result: 0
+            };
+
+
+        var courseListApp = angular.module("courseListApp", []);
+
+        // Контроллер
+
+        courseListApp.controller("CourseListCtrl", function ($scope) {
+
+            $scope.data = model;
+
+            // Обработчик нажатия по кнопке
+            $scope.showAdd = function () {
+                if(!isNaN($scope.data.first) && !isNaN($scope.data.second)){
+                    $scope.data.result = $scope.data.first + $scope.data.second;
+                    $scope.error = '';
                 }
-
-                $scope.links = {
-                    nameLink: 'libs/name.html',
-                    priceLink: 'libs/price.html',
-                    catLink: 'libs/cat.html',
-                    countLink: 'libs/count.html',
-                    taxLink: 'libs/tax.html',
-                    expLink: 'libs/exp.html'
+                else {
+                    $scope.error = 'Enter correct values!'
+                    $scope.data.result = 'err';
                 }
+            };
 
-                $scope.items = [
-                    { name: "B Item", price: 10.9, category: "Category 1", count: 10, tax: 1.12, expiration: 10 },
-                    { name: "A Item", price: 1.1, category: "Category 1", count: 8, tax: 0.55, expiration: 12 },
-                    { name: "D Item", price: 2.6, category: "Category 2", count: 7, tax: 0.22, expiration: 5 },
-                    { name: "C Item", price: 17.5, category: "Category 2", count: 33, tax: 2.77, expiration: 10 }];
-
-                $scope.filter = function () {
-                    if($scope.active.name == true){
-                        $scope.links.nameLink = 'libs/name.html';
-                    }
-                    else if($scope.active.name == false) {
-                        $scope.links.nameLink = '';
-                    }
-
-                    if($scope.active.price == true){
-                        $scope.links.priceLink = 'libs/price.html';
-                    }
-                    else if($scope.active.price == false) {
-                        $scope.links.priceLink = '';
-                    }
-
-                    if($scope.active.cat == true){
-                        $scope.links.catLink = 'libs/cat.html';
-                    }
-                    else if($scope.active.cat == false) {
-                        $scope.links.catLink = '';
-                    }
-
-                    if($scope.active.count == true){
-                        $scope.links.countLink = 'libs/count.html';
-                    }
-                    else if($scope.active.count == false) {
-                        $scope.links.countLink = '';
-                    }
-
-                    if($scope.active.tax == true){
-                        $scope.links.taxLink = 'libs/tax.html';
-                    }
-                    else if($scope.active.tax == false) {
-                        $scope.links.taxLink = '';
-                    }
-
-                    if($scope.active.exp == true){
-                        $scope.links.expLink = 'libs/exp.html';
-                    }
-                    else if($scope.active.exp == false) {
-                        $scope.links.expLink = '';
-                    }
+            $scope.showSub = function () {
+                if(!isNaN($scope.data.first) && !isNaN($scope.data.second)){
+                    $scope.data.result = $scope.data.first - $scope.data.second;
+                    $scope.error = '';
                 }
-            });
+                else {
+                    $scope.error = 'Enter correct values!'
+                    $scope.data.result = 'err';
+                }
+            };
+
+            $scope.showMul = function () {
+                if(!isNaN($scope.data.first) && !isNaN($scope.data.second)){
+                    $scope.data.result = $scope.data.first * $scope.data.second;
+                    $scope.error = '';
+                }
+                else {
+                    $scope.error = 'Enter correct values!'
+                    $scope.data.result = 'err';
+                }
+            };
+
+            $scope.showDiv = function () {
+                if(!isNaN($scope.data.first) && !isNaN($scope.data.second) && $scope.data.second != 0){
+                    $scope.data.result = $scope.data.first + $scope.data.second;
+                    $scope.error = '';
+                }
+                else {
+                    $scope.error = 'Enter correct values!'
+                    $scope.data.result = 'err';
+                }
+            };
+
+            $scope.reset = function () {
+                    $scope.data.result = 0;
+                    $scope.data.first = $scope.data.second = 0;
+                    $scope.error = '';
+            };
+
+
+        });
 
     </script>
 
 </head>
 
-<body ng-controller="mainCtrl">
-<div class="panel panel-primary" ng-cloak>
-    <table class="table">
-        <thead>
-        <tr>
-            <th><label for="name">Name</label><input id="name" type="checkbox" class="checkbox" ng-model="active.name" ng-click="filter()"/></th>
-            <th><label for="price">Price</label><input id="price" type="checkbox" class="checkbox" ng-model="active.price" ng-click="filter()"/></th>
-            <th><label for="cat">Category</label><input id="cat" type="checkbox" class="checkbox" ng-model="active.cat" ng-click="filter()"/></th>
-            <th><label for="count">Count</label><input id="count" type="checkbox" class="checkbox" ng-model="active.count" ng-click="filter()"/></th>
-            <th><label for="tax">Tax</label><input id="tax" type="checkbox" class="checkbox" ng-model="active.tax" ng-click="filter()"/></th>
-            <th><label for="exp">Expiration</label><input id="exp" type="checkbox" class="checkbox" ng-model="active.exp" ng-click="filter()"/></th>
-        </tr>
-        </thead>
-        <tbody>
+<body ng-controller="CourseListCtrl">
+<div class="container">
+    <div class="page-header">
+        <h1>
+            Calculator
+        </h1>
+    </div>
 
-        <tr ng-repeat="item in items" ng-cloak>
-            <td><ng-include src="links.nameLink"></ng-include></td>
-            <td><ng-include src="links.priceLink"></ng-include></td>
-            <td><ng-include src="links.catLink"></ng-include></td>
-            <td><ng-include src="links.countLink"></ng-include></td>
-            <td><ng-include src="links.taxLink"></ng-include></td>
-            <td><ng-include src="links.expLink"></ng-include></td>
+    <div class="panel">
 
-        </tr>
-        <tbody>
-    </table>
+        <div class="form-group">
+            <label for="first">First number:</label>
+            <input class="form-control" ng-model="data.first" id='first' />
+        </div>
+
+        <div class="form-group">
+            <label for="second">Second number:</label>
+            <input class="form-control" ng-model="data.second" id='second' />
+        </div>
+
+        <button class="btn btn-info" ng-click="showAdd()">+</button>
+        <button class="btn btn-info" ng-click="showSub()">-</button>
+        <button class="btn btn-info" ng-click="showMul()">*</button>
+        <button class="btn btn-info" ng-click="showDiv()">/</button>
+        <button style="margin-left: 30px;" class="btn btn-default" ng-click="reset()">Reset</button>
+        <h4 style="color: red">{{error}}</h4>
+
+
+        <h3>Result:</h3>
+        <p>{{data.result}}</p>
+    </div>
 </div>
 </body>
 </html>
+

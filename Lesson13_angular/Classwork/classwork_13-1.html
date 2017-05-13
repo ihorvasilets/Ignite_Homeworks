@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html ng-app="classesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork 13-1</title>
+    <script src="../../libraries/angular.js"></script>
+    <link href="../../libraries/bootstrap.css" rel="stylesheet" />
+    <link href="../../libraries/bootstrap-theme.css" rel="stylesheet" />
+
+    <!--### Задача1
+    Создайте страницу с элементом div и кнопкой. Реализуйте следующее:
+    При нажатии на кнопку элементу div присваиваются два произвольных CSS-класса-->
+
+    <script>
+
+        var model = [1, 2, 3, 4, 4];
+
+
+        var app = angular.module('classesApp', [])
+            .controller('mainCtrl', function ($scope) {
+                $scope.styleObj = {
+                    br: false,
+                    size: false
+                };
+                $scope.change = function () {
+                    $scope.styleObj.br = true;
+                    $scope.styleObj.size = true;
+
+                }
+            })
+
+    </script>
+
+    <style>
+        .default{
+            width: 100%;
+            height: 200px;
+            border: 1px solid green;
+
+        }
+        .br{
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            background-color: greenyellow;
+        }
+
+        .size{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+
+</head>
+
+<body ng-controller="mainCtrl">
+<div class="container">
+    <div class="page-header">
+        <h1>
+            Push the button
+        </h1>
+    </div>
+
+    <div class="panel">
+        <div class="panel-heading">
+            <button class="btn btn-default" ng-click="change()">Button</button>
+        </div>
+
+        <div class="panel-body">
+            <div class="default" ng-class="styleObj"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

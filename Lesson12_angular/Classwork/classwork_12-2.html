@@ -4,9 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Classwork 12-2</title>
-    <script src="angular.js"></script>
-    <link href="bootstrap.css" rel="stylesheet" />
-    <link href="bootstrap-theme.css" rel="stylesheet" />
+    <script src="../../libraries/angular.js"></script>
+    <link href="../../libraries/bootstrap.css" rel="stylesheet" />
+    <link href="../../libraries/bootstrap-theme.css" rel="stylesheet" />
+
+    <!--### Задача 2
+    Используйте таблицу с данными массива items из предыдущей задачи. Реализуйте следующее:
+
+    * Добавьте на страницу 5 элементов checkbox с именами свойств элементов массива items(name, price и т.д.)
+    * Нажатие на каждый из checkbox скрывает/отображает соответствующее свойство элементов массива items в таблице
+    * Используйте директиву ng-switch-->
 
     <script>
 
@@ -49,37 +56,48 @@
             <tbody>
 
             <tr ng-cloak>
-                <td>
-                    <table ng-repeat="item in items" ng-cloak  ng-switch="active.name">
-                        <tr ng-switch-when="true">{{item.name}}</tr>
+                <td ng-switch="active.name">
+                    <table ng-switch-when="true" >
+                        <tr ng-repeat="item in items" ng-cloak>
+                            <td>{{item.name}}</td>
+                        </tr>
                     </table>
                 </td>
                 <td ng-switch="active.price">
-                    <table ng-repeat="item in items" ng-cloak ng-switch-when="true">
-                        <tr>{{item.price}}</tr>
+                    <table ng-switch-when="true" >
+                        <tr ng-repeat="item in items" ng-cloak>
+                            <td>{{item.price}}</td>
+                        </tr>
                     </table>
                 </td>
                 <td ng-switch="active.cat">
-                    <table ng-repeat="item in items" ng-cloak ng-switch-when="true">
-                        <tr>{{item.category}}</tr>
+                    <table ng-switch-when="true" >
+                        <tr ng-repeat="item in items" ng-cloak>
+                            <td>{{item.category}}</td>
+                        </tr>
                     </table>
                 </td>
                 <td ng-switch="active.count">
-                    <table ng-repeat="item in items" ng-cloak ng-switch-when="true">
-                        <tr>{{item.count}}</tr>
+                    <table ng-switch-when="true" >
+                        <tr ng-repeat="item in items" ng-cloak>
+                            <td>{{item.count}}</td>
+                        </tr>
                     </table>
                 </td>
                 <td ng-switch="active.tax">
-                    <table ng-repeat="item in items" ng-cloak ng-switch-when="true">
-                        <tr>{{item.tax}}</tr>
+                    <table ng-switch-when="true" >
+                        <tr ng-repeat="item in items" ng-cloak>
+                            <td>{{item.tax}}</td>
+                        </tr>
                     </table>
                 </td>
                 <td ng-switch="active.exp">
-                    <table ng-repeat="item in items" ng-cloak ng-switch-when="true">
-                        <tr>{{item.expiration}}</tr>
+                    <table ng-switch-when="true" >
+                        <tr ng-repeat="item in items" ng-cloak>
+                            <td>{{item.expiration}}</td>
+                        </tr>
                     </table>
                 </td>
-
             </tr>
             <tbody>
         </table>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html ng-app="classesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 13-1</title>
+    <script src="../../libraries/angular.js"></script>
+    <link href="../../libraries/bootstrap.css" rel="stylesheet" />
+    <link href="../../libraries/bootstrap-theme.css" rel="stylesheet" />
+
+    <!--### Задача 1
+    Создайте три разных CSS класса, которые по-разному будут оформлять блок текста на странице. Реализуйте возможность выбирать стиль для оформления страницы с помощью кнопок или checkbox
+    -->
+
+    <script>
+
+        var model = [1, 2, 3, 4, 4];
+
+
+        var app = angular.module('classesApp', [])
+            .controller('mainCtrl', function ($scope) {
+//                $scope.styleText = "aclass";
+            })
+
+    </script>
+
+    <style>
+        .aclass{
+            font: bold 25px impact, sans-serif;
+            color: #46b8da;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+
+        }
+        .bclass{
+            font: 12px monospace;
+            color: #adadad;
+        }
+
+        .cclass{
+            color: red;
+            font-style: italic;
+            background-color: darkgrey;
+        }
+    </style>
+
+</head>
+
+<body ng-controller="mainCtrl">
+<div class="container">
+    <div class="page-header">
+        <h1>
+            Text-style
+        </h1>
+    </div>
+
+    <div class="panel">
+        <div class="panel-heading">
+            <label class="radio-inline"><input type="radio" name="text-style" ng-model='styleText' value="aclass" ng-init="styleText ='aclass'"/>Style 1</label>
+            <label class="radio-inline"><input type="radio" name="text-style" ng-model='styleText' value="bclass"/>Style 2</label>
+            <label class="radio-inline"><input type="radio" name="text-style" ng-model='styleText' value="cclass"/>Style 3</label>
+        </div>
+
+        <div class="panel-body">
+            <p class="default" ng-class="styleText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, accusamus asperiores aspernatur, consequatur cumque deleniti facere fuga harum molestias perspiciatis quas voluptatem. Accusamus adipisci expedita pariatur placeat quidem suscipit, totam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, assumenda atque debitis deleniti dolores doloribus ducimus expedita fuga fugiat illo nemo odit quo ratione rem sunt tempora tenetur vel voluptatum.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
